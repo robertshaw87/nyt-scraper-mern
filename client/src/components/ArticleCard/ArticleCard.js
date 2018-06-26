@@ -12,7 +12,7 @@ const ArticleCard = props => (
     		<button 
 	    		className="btn btn-primary" 
 	    		disabled = {props.alreadySaved}
-	    		onClicked = {props.save}
+	    		onClick = {props.save}
     		>
 	    		{(props.alreadySaved 
 	    			? <i className="fas fa-bookmark"></i> 
@@ -21,7 +21,7 @@ const ArticleCard = props => (
     	:
     		<button
 	    		className="btn btn-danger"
-	    		onClicked = {props.delete}
+	    		onClick = {props.delete}
     		>
     			<i className="fas fa-trash-alt"></i>
     		</button>
