@@ -15,6 +15,6 @@ export default {
   },
   // Grabs the articles matching the given search params
   searchArticles: function(topic, start, end) {
-    return axios.get(`/api/articles/?topic=${topic}&start=${start}&end=${end}`);
+    return axios.get(`/api/articles/search/?topic=${topic}&start=${start}&end=${end}`);
   }
 };
