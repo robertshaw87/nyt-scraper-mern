@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import ArticleCard from "../../components/ArticleCard"
@@ -49,7 +48,12 @@ class Search extends Component {
   		end = end.replace(/-/g,"");
 
   		API.searchArticles(topic, start, end)
-  		.then(res => this.setState({articles: res.data, topic:"", start:"", end:""}))
+  		.then(res => {
+        console.log("=======================")
+        console.log(res.data)
+        console.log("=======================")
+        return this.setState({articles: res.data, topic:"", start:"", end:""})}
+      )
   		.catch(err => console.log(err));
 
   	};
