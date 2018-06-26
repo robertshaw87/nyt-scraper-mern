@@ -3,8 +3,8 @@ const articlesController = require("../../controllers/articlesController");
 const search = require("../../services/scrape");
 
 // Matching with "/api/articles"
-router.route("/search/:topic/:start/:end")
-    .get(search.getArticles)
+router.route("/search/?")
+    .get(search(req.query))
 
 router.route("/saved")
     .get(articlesController.findAll)
