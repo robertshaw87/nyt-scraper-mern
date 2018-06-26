@@ -15,15 +15,15 @@ const ArticleCard = props => (
 	    		onClicked = {props.save}
     		>
 	    		{(props.alreadySaved 
-	    			? <i class="fas fa-bookmark"></i> 
-	    			: <i class="far fa-bookmark"></i>)}
+	    			? <i className="fas fa-bookmark"></i> 
+	    			: <i className="far fa-bookmark"></i>)}
     		</button>
     	:
     		<button
 	    		className="btn btn-danger"
 	    		onClicked = {props.delete}
     		>
-    			<i class="fas fa-trash-alt"></i>
+    			<i className="fas fa-trash-alt"></i>
     		</button>
     	
     	}
