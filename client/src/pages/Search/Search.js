@@ -114,7 +114,6 @@ class Search extends Component {
                 description = {article.article_description}
                 img = {article.article_img}
                 url = {article.article_url}
-                date = {article.article_date}
                 save = {() => this.saveArticle(i)}
                 alreadySaved = {this.alreadySaved(article)}
                 key = {i}
