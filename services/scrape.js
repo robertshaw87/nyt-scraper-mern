@@ -8,8 +8,7 @@ module.exports =/*const test = */ async (req,res) => {
   
   try {
     const data = await axios.get(`https://www.nytimes.com/search?endDate=${end}&query=${topic}&sort=best&startDate=${start}`);
-    // const data = await axios.get(`https://www.nytimes.com/search?endDate=20180731&query=chickens&sort=best&startDate=20180601`);
-
+    
     const articles = [];
     const $ = cheerio.load(data.data, {
       normalizeWhitespace: true,
@@ -21,7 +20,7 @@ module.exports =/*const test = */ async (req,res) => {
 
     for (let i = 0; ((articles.length <=5) && (i < 25)); i++) {
 
-      const url = $(orderedArticles[i]).find('a').attr('href');
+      const url = `https://www.newyorktimes.com${$(orderedArticles[i]).find('a').attr('href')}`;
       const title = $(orderedArticles[i]).find('h4').text();
       const description = $(orderedArticles[i]).find('p').text();
       const img = $(orderedArticles[i]).find('img').attr('src');
