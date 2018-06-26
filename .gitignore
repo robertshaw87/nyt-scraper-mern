@@ -63,3 +63,6 @@ typings/
 
 # accounting for macs
 .DS_Store
+
+# build
+*/build
