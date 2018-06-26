@@ -9,10 +9,29 @@ import ArticleCard from "../../components/ArticleCard"
 class Search extends Component {
   state = {
     articles: [],
+    savedArticles: [],
     topic: "",
     start: "",
     end: ""
   };
+
+  componentDidMount() {
+    this.getSavedArticles();
+  }
+
+  checkSaved = article => {
+    let alreadySaved = false;
+    this.state.savedArticles.map((elem, i) => {
+      if (elem.article_url === article.article_url)
+        alreadySaved = true;
+    })
+    return alreadySaved;
+  }
+
+  getSavedArticles = () => 
+    API.getSavedArticles()
+      .then(res => this.setState({savedArticles: res.data}))
+      .catch(err => console.log(err))
 
   handleInputChange = event => {
   	const { name,value } = event.target;
@@ -35,6 +54,12 @@ class Search extends Component {
 
   	};
   };
+
+  saveArticle = index => {
+    API.saveArticle(this.state.articles[index])
+      .then(res => this.getSavedArticles())
+      .catch(err => console.log(err))
+  }
 
   render() {
     return (
@@ -83,12 +108,18 @@ class Search extends Component {
 	  		</Row>
         <Row className="justify-content-center">
           <Col size="10">
-            {this.state.articles.map(article => (
+            {this.state.articles.map((article, i) => (
               <ArticleCard 
-                article_title = {article.article_title}
+                title = {article.article_title}
+                description = {article.article_description}
+                img = {article.article_img}
+                url = {article.article_url}
+                date = {article.article_date}
+                save = {() => this.saveArticle(i)}
+                alreadySaved = {this.alreadySaved(article)}
+                key = {i}
               />
             ))}
-
           </Col>
         </Row>
 
