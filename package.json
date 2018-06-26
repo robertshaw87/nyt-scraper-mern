@@ -19,8 +19,14 @@
     "nodemon": "^1.11.0"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
-    "express": "^4.15.4",
-    "if-env": "^1.0.4"
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "if-env": "^1.0.4",
+    "mongoose": "^5.1.6",
+    "morgan": "^1.9.0",
+    "morgan-body": "^2.4.0"
   }
 }
