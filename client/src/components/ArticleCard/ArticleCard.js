@@ -1,7 +1,7 @@
 import React from "react";
 import "./ArticleCard.css";
 
-const ArticleCard = () => (
+const ArticleCard = props => (
   <div>
 
 
