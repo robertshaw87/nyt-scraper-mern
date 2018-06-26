@@ -1,11 +1,13 @@
 import React from "react";
 import "./Jumbotron.css";
 
-const Jumbotron = () => (
-  <div>
+const Jumbotron = props => (
 
-    
-  </div>
+<div className="jumbotron text-center m-3">
+  <h1 className="display-4"><i className={props.fontawesome}></i> {props.title}</h1>
+  <p className="lead">{props.lead}</p>
+</div>
+
 );
 
 export default Jumbotron;
