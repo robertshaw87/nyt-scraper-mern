@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 
 const bluebird = require('bluebird');
 const mongoose = require('mongoose');
-const morgan = require('morgan')
+const logger = require('morgan')
 const morganBody = require('morgan-body');
 
 const PORT = process.env.PORT || 3001;
