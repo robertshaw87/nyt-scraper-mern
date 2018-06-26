@@ -2,9 +2,9 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-module.exports =/*const test = */ async (query) => {
+module.exports =/*const test = */ async (req,res) => {
 
-  const { topic, start, end } = query;
+  const { topic, start, end } = req.query;
   
   try {
     const data = await axios.get(`https://www.nytimes.com/search?endDate=${end}&query=${topic}&sort=best&startDate=${start}`);
@@ -32,7 +32,7 @@ module.exports =/*const test = */ async (query) => {
 
     }
 
-    return articles;
+    res.json(articles);
 
   } catch(err) {
     console.log(err);
