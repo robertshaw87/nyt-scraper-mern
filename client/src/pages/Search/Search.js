@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
+import ArticleCard from "../../components/ArticleCard"
 
 class Search extends Component {
   state = {
@@ -46,7 +47,7 @@ class Search extends Component {
 	      />
 	      	<Row
 	      	 className="justify-content-center mt-3">
-	      	 <Col size="11">
+	      	 <Col size="10">
 	  		<form>
 	  		<label>Topic</label>
 	  		<Input
@@ -80,6 +81,16 @@ class Search extends Component {
 	  		</form>
 	  		</Col>
 	  		</Row>
+        <Row className="justify-content-center">
+          <Col size="10">
+            {this.state.articles.map(article => (
+              <ArticleCard 
+                article_title = {article.article_title}
+              />
+            ))}
+
+          </Col>
+        </Row>
 
         
       </Container>
