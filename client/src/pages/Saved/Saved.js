@@ -16,7 +16,11 @@ class Saved extends Component {
   render() {
     return (
       <Container>
-        
+        <Jumbotron 
+          title = "Saved New York Times Articles"
+          lead = "Here are your saved articles..."
+          fontawesome = "fas fa-bookmark"
+        />
       </Container>
     );
   }

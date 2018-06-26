@@ -6,7 +6,7 @@ const Navbar = props => (
 
 <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-  <Link to="/" className="navbar-brand">NYT-Scraper</Link>
+  <Link to="/" className="navbar-brand"><i className="far fa-newspaper"></i> NYT-Scraper</Link>
 
   <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span className="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@ const Navbar = props => (
         <Link to ="/saved" className="nav-link">Saved Articles</Link>
       </li>
     </ul>
-    
+
   </div>
 </nav>
 );

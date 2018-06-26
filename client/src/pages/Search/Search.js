@@ -12,6 +12,11 @@ class Search extends Component {
   render() {
     return (
       <Container>
+      <Jumbotron 
+      	title = "New York Times Article Scraper"
+      	lead = "Search for and save interesting articles!"
+      	fontawesome = "fas fa-search"
+      />
         
       </Container>
     );
