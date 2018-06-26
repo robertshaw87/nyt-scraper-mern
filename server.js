@@ -1,8 +1,17 @@
 const express = require("express");
 const path = require("path");
 const bodyParser = require("body-parser");
+
+const bluebird = require('bluebird');
+const mongoose = require('mongoose');
+const morgan = require('morgan')
+const morganBody = require('morgan-body');
+
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+
+
 
 // Define middleware here
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -11,6 +20,14 @@ app.use(bodyParser.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+app.use(logger('dev'));
+morganBody(app, {
+  logReqDateTime: false,
+  logReqUserAgent: false
+});
+
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/nyt-scrape", { promiseLibrary: bluebird });
 
 // Define API routes here
 
