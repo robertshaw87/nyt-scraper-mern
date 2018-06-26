@@ -22,7 +22,7 @@ class Search extends Component {
   checkSaved = article => {
     let alreadySaved = false;
     this.state.savedArticles.map((elem, i) => {
-      if (elem.article_url === article.article_url)
+      if (elem.url === article.url)
         alreadySaved = true;
     })
     return alreadySaved;
@@ -110,10 +110,10 @@ class Search extends Component {
           <Col size="10">
             {this.state.articles.map((article, i) => (
               <ArticleCard 
-                title = {article.article_title}
-                description = {article.article_description}
-                img = {article.article_img}
-                url = {article.article_url}
+                title = {article.title}
+                description = {article.description}
+                img = {article.img}
+                url = {article.url}
                 save = {() => this.saveArticle(i)}
                 alreadySaved = {this.alreadySaved(article)}
                 key = {i}
