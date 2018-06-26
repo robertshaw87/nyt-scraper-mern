@@ -22,8 +22,16 @@ class Search extends Component {
 
   handleFormSubmit = event => {
   	event.preventDefault();
-  	if (this.state.topic) {
-  		console.log("saved!");
+
+  	if (this.state.topic && this.state.start && this.state.end) {
+  		let {topic, start, end} = this.state;
+  		start = start.replace(/-/g,"");
+  		end = end.replace(/-/g,"");
+
+  		API.searchArticles(topic, start, end)
+  		.then(res => this.setState({articles: res.data, topic:"", start:"", end:""}))
+  		.catch(err => console.log(err));
+
   	};
   };
 
@@ -63,7 +71,7 @@ class Search extends Component {
 	  		 />
 
 	  		 <FormBtn
-		  		 disabled = {!this.state.topic}
+		  		 disabled = {!(this.state.topic && this.state.start && this.state.end)}
 		  		 onClick = {this.handleFormSubmit}
 	  		  >
 	  		  Submit
