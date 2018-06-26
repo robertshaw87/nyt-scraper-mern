@@ -119,7 +119,7 @@ class Search extends Component {
                 img = {article.img}
                 url = {article.url}
                 save = {() => this.saveArticle(i)}
-                alreadySaved = {this.alreadySaved(article)}
+                alreadySaved = {this.checkSaved(article)}
                 key = {i}
               />
             ))}
