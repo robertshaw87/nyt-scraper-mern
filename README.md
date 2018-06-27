@@ -48,12 +48,14 @@ https://docs.mongodb.com/manual/installation/
 
 ### NPM Packages
 * [axios](https://www.npmjs.com/package/axios) - Promise based HTTP client
+* [bluebird](https://www.npmjs.com/package/bluebird) - Promise library
 * [body-parser](https://www.npmjs.com/package/body-parser) - Request parsing middleware
 * [cheerio](https://www.npmjs.com/package/cheerio) - Markup parser and manipulator
 * [Express](https://www.npmjs.com/package/express) - Routing framework
 * [mongoose](https://www.npmjs.com/package/mongoose) - NoSQL database
 * [morgan](https://www.npmjs.com/package/morgan) - Logging middleware
 * [morgan-body](https://www.npmjs.com/package/morgan-body) - Logging middleware
+* [react-router-dom](https://www.npmjs.com/package/react-router-dom) - Routing library for React with DOM bindings
 
 
 ## Author :key:
