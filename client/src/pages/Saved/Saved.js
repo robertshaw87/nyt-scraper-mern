@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import ArticleCard from "../../components/ArticleCard"
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
+import ArticleCard from "../../components/ArticleCard";
 
 class Saved extends Component {
   state = {
