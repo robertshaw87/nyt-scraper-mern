@@ -11,7 +11,8 @@ class Search extends Component {
     savedArticles: [],
     topic: "",
     start: "",
-    end: ""
+    end: "",
+    emptySearch: false
   };
 
   componentDidMount() {
@@ -49,11 +50,13 @@ class Search extends Component {
 
   		API.searchArticles(topic, start, end)
   		.then(res => {
-        console.log("=======================")
-        console.log(res.data)
-        console.log("=======================")
-        return this.setState({articles: res.data, topic:"", start:"", end:""})}
-      )
+        let articles = res.data;
+        let emptySearch = false;
+        if (articles.length <= 0) {
+          emptySearch = true;
+        }
+        this.setState({articles, emptySearch, topic:"", start:"", end:""})
+      })
   		.catch(err => console.log(err));
 
   	};
@@ -120,7 +123,11 @@ class Search extends Component {
 
         <Row className="justify-content-center">
           <Col size="10">
-            {this.state.articles.map((article, i) => (
+            {this.state.emptySearch
+            ?
+            <h3>No results found. Please try another query.</h3>
+            :
+              this.state.articles.map((article, i) => (
               <ArticleCard 
                 title = {article.title}
                 description = {article.description}
@@ -129,8 +136,8 @@ class Search extends Component {
                 save = {() => this.saveArticle(i)}
                 alreadySaved = {this.checkSaved(article)}
                 key = {i}
-              />
-            ))}
+              />))
+            }
           </Col>
         </Row>
 
