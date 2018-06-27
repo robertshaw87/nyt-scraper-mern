@@ -88,7 +88,7 @@ class Search extends Component {
 	  		<form>
 	  		<label>Topic</label>
 	  		<Input
-		  		 value = {this.state.title}
+		  		 value = {this.state.topic}
 		  		 onChange = {this.handleInputChange}
 		  		 name = "topic"
 		  		 placeholder = "Enter a topic"
