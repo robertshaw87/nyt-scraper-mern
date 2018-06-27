@@ -2,9 +2,11 @@ import React from "react";
 import "./ArticleCard.css";
 
 const ArticleCard = props => (
-<div className="card">
-  <div className="card-header text-right">
-        
+<div className="card my-4">
+  <div className="card-header">
+
+
+        <span className="float-right">
         {
 
     	(window.location.pathname === "/" || window.location.pathname === "/search")  
@@ -27,15 +29,17 @@ const ArticleCard = props => (
     		</button>
     	
     	}
+    	</span>
+
+    	<h3>
+    	<a href={props.url} target="_blank">{props.title}</a>
+    	</h3>
     	
   </div>
   <div className="card-body">
   	{props.img 
-  		? <img className="float-left" src={props.img} alt={props.title}/> 
+  		? <img className="float-left article-img" src={props.img} alt={props.title}/> 
   		: null}
-    <h5 className="card-title">
-    <a href={props.url} target="_blank">{props.title}</a>
-    </h5>
     <p className="card-text">{props.description}</p>
 
   </div>
