@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 const Navbar = props => (
 
-<nav className="navbar navbar-expand-lg navbar-light bg-light">
+<nav className="navbar sticky-top navbar-expand-lg navbar-dark">
 
   <Link to="/" className="navbar-brand"><i className="far fa-newspaper"></i> NYT-Scraper</Link>
 
@@ -14,7 +14,7 @@ const Navbar = props => (
 
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
 
-    <ul className="navbar-nav mr-auto">
+    <ul className="navbar-nav mr-auto w-100 justify-content-end">
       <li className={window.location.pathname === "/" ||
   					 window.location.pathname === "/search"
   					 ? "nav-item active"

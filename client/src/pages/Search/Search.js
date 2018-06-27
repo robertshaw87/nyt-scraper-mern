@@ -77,9 +77,14 @@ class Search extends Component {
 	      	lead = "Search for and save interesting articles!"
 	      	fontawesome = "fas fa-search"
 	      />
-	      	<Row
-	      	 className="justify-content-center mt-3">
-	      	 <Col size="10">
+	      <Row className="justify-content-center">
+	      <Col size="10">
+	      	<div className="card">
+	      	<div className="card-header">
+	      	<h4><i className="far fa-hand-point-right"></i> Search </h4>
+	      	</div>
+
+	      	<div className="card-body">
 	  		<form>
 	  		<label>Topic</label>
 	  		<Input
@@ -111,8 +116,11 @@ class Search extends Component {
 	  		 </FormBtn>
 
 	  		</form>
-	  		</Col>
-	  		</Row>
+	  		</div>
+	  		</div>
+	  	 </Col>
+	  	</Row>
+
         <Row className="justify-content-center">
           <Col size="10">
             {this.state.emptySearch
