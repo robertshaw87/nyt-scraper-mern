@@ -83,7 +83,7 @@ class Search extends Component {
 	  		<form>
 	  		<label>Topic</label>
 	  		<Input
-		  		 value = {this.state.title}
+		  		 value = {this.state.topic}
 		  		 onChange = {this.handleInputChange}
 		  		 name = "topic"
 		  		 placeholder = "Enter a topic"
@@ -120,7 +120,7 @@ class Search extends Component {
           <Col size="10">
             {this.state.emptySearch
             ?
-            <h3>No results found. Please try another query.</h3>
+            <h3 className="text-center mt-2">No results found. Please try another query.</h3>
             :
               this.state.articles.map((article, i) => (
               <ArticleCard 
