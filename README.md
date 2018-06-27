@@ -53,6 +53,7 @@ https://docs.mongodb.com/manual/installation/
 * [Express](https://www.npmjs.com/package/express) - Routing framework
 * [mongoose](https://www.npmjs.com/package/mongoose) - NoSQL database
 * [morgan](https://www.npmjs.com/package/morgan) - Logging middleware
+* [morgan-body](https://www.npmjs.com/package/morgan-body) - Logging middleware
 
 
 ## Author :key:
