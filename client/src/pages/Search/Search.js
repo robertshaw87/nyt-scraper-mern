@@ -20,12 +20,7 @@ class Search extends Component {
   }
 
   checkSaved = article => {
-    let alreadySaved = false;
-    this.state.savedArticles.map((elem, i) => {
-      if (elem.url === article.url)
-        alreadySaved = true;
-    })
-    return alreadySaved;
+    return this.state.savedArticles.filter(elem => elem.url === article.url).length > 0;
   }
 
   getSavedArticles = () => 
