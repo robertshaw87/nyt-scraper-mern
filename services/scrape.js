@@ -2,37 +2,49 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-/*module.exports =*/const test = async (query) => {
-  // const { topic, start, end } = query;
-  try {
-    // const data = await axios.get(`https://www.nytimes.com/search?endDate=${end}&query=${topic}&sort=best&startDate=${start}`);
-    const data = await axios.get(`https://www.nytimes.com/search?endDate=20180731&query=chickens&sort=best&startDate=20180601`);
+module.exports =/*const test = */ async (req,res) => {
 
+  const { topic, start, end } = req.query;
+  
+  try {
+    const data = await axios.get(`https://www.nytimes.com/search?endDate=${end}&query=${topic}&sort=best&startDate=${start}`);
+    
     const articles = [];
     const $ = cheerio.load(data.data, {
       normalizeWhitespace: true,
       xmlMode: true,
       lowerCaseTags: true
     });
-  //
-    const orderedArticles = $('ol').children().find('li');
 
-    console.log(orderedArticles);
+    const orderedArticles = $('li')
 
-    orderedArticles.each((i,el) => {
-      const url = $(this);
-      // console.log(url);
-      // articles.push(url);
-    })
+    for (let i = 0; ((articles.length <=5) && (i < 25)); i++) {
 
-    return articles;
+      let url = $(orderedArticles[i]).find('a').attr('href');
+
+
+      const title = $(orderedArticles[i]).find('h4').text();
+      const description = $(orderedArticles[i]).find('p').text();
+      const img = $(orderedArticles[i]).find('img').attr('src');
+
+      if ((url !== undefined) && (img !== undefined) && (title !== undefined) && (description !== undefined)) {
+        console.log(url);
+        if(url.indexOf(".com") === -1){
+          url = "https://www.nytimes.com" + url;
+        }
+        console.log(url);
+        articles.push({ url, title, description, img });
+      }
+
+    }
+
+    res.json(articles);
 
   } catch(err) {
     console.log(err);
   }
 }
 
-(async () => {
-  console.log(await test())
-})();
-
+// (async () => {
+//   console.log(await test())
+// })();

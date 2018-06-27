@@ -1,17 +1,37 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { Input, TextArea, FormBtn } from "../../components/Form";
+import { Input, FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
+import ArticleCard from "../../components/ArticleCard"
 
 class Search extends Component {
   state = {
     articles: [],
+    savedArticles: [],
     topic: "",
     start: "",
-    end: ""
+    end: "",
+    emptySearch: false
   };
+
+  componentDidMount() {
+    this.getSavedArticles();
+  }
+
+  checkSaved = article => {
+    let alreadySaved = false;
+    this.state.savedArticles.map((elem, i) => {
+      if (elem.url === article.url)
+        alreadySaved = true;
+    })
+    return alreadySaved;
+  }
+
+  getSavedArticles = () => 
+    API.getSavedArticles()
+      .then(res => this.setState({savedArticles: res.data}))
+      .catch(err => console.log(err))
 
   handleInputChange = event => {
   	const { name,value } = event.target;
@@ -29,11 +49,24 @@ class Search extends Component {
   		end = end.replace(/-/g,"");
 
   		API.searchArticles(topic, start, end)
-  		.then(res => this.setState({articles: res.data, topic:"", start:"", end:""}))
+  		.then(res => {
+        let articles = res.data;
+        let emptySearch = false;
+        if (articles.length <= 0) {
+          emptySearch = true;
+        }
+        this.setState({articles, emptySearch, topic:"", start:"", end:""})
+      })
   		.catch(err => console.log(err));
 
   	};
   };
+
+  saveArticle = index => {
+    API.saveArticle(this.state.articles[index])
+      .then(res => this.getSavedArticles())
+      .catch(err => console.log(err))
+  }
 
   render() {
     return (
@@ -44,9 +77,14 @@ class Search extends Component {
 	      	lead = "Search for and save interesting articles!"
 	      	fontawesome = "fas fa-search"
 	      />
-	      	<Row
-	      	 className="justify-content-center mt-3">
-	      	 <Col size="11">
+	      <Row className="justify-content-center">
+	      <Col size="10">
+	      	<div className="card">
+	      	<div className="card-header">
+	      	<h4><i className="far fa-hand-point-right"></i> Search </h4>
+	      	</div>
+
+	      	<div className="card-body">
 	  		<form>
 	  		<label>Topic</label>
 	  		<Input
@@ -78,8 +116,30 @@ class Search extends Component {
 	  		 </FormBtn>
 
 	  		</form>
-	  		</Col>
-	  		</Row>
+	  		</div>
+	  		</div>
+	  	 </Col>
+	  	</Row>
+
+        <Row className="justify-content-center">
+          <Col size="10">
+            {this.state.emptySearch
+            ?
+            <h3>No results found. Please try another query.</h3>
+            :
+              this.state.articles.map((article, i) => (
+              <ArticleCard 
+                title = {article.title}
+                description = {article.description}
+                img = {article.img}
+                url = {article.url}
+                save = {() => this.saveArticle(i)}
+                alreadySaved = {this.checkSaved(article)}
+                key = {i}
+              />))
+            }
+          </Col>
+        </Row>
 
         
       </Container>

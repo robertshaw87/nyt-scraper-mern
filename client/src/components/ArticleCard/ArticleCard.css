@@ -1,0 +1,18 @@
+.article-img {
+	max-height: 300px;
+	padding: 0px 20px 15px 0px;
+}
+
+h3 {
+	font-family: 'Roboto Slab', serif;
+}
+
+a {
+	color: #284359;
+}
+
+a:hover {
+	color: #5b4d91;
+	letter-spacing: 0.5px;
+	text-decoration: none;
+}
