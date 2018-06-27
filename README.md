@@ -1,10 +1,15 @@
-# NYT-Scraper :statue_of_liberty:
+# [NYT-Scraper](https://scraper-nyt-react.herokuapp.com/) :statue_of_liberty:
 
-This is a fullstack MERN web application that crawls the New York Times website and allows users to search for and save articles based on a query.
+This is a fullstack MERN web application that allows users to search for and save articles based on a query.
 
-The application is deployed on heroku [here](https://quiet-beach-74728.herokuapp.com/)
+![NYT-Scraper](/README/readme.gif)
 
 ## Getting Started :city_sunset:
+ [The application is deployed on heroku here](https://scraper-nyt-react.herokuapp.com/)
+
+You can open up the deployed link and explore the website. Enter a search query along with the time range you'd like to search for articles from. You'll get the most recent responses from the New York Times.
+
+You can store interesting articles to look at later and then remove them from the saved list.
 
 ### Prerequisites :open_file_folder:
 You will need both `node` and `yarn` installed on your computer in order to run this app. You can find out more about `yarn` at their [official site.](https://yarnpkg.com/lang/en/docs/install/)
@@ -18,7 +23,9 @@ or
 ```
 yarn install
 ```
-after the dependencies have been installed run
+after the dependencies have been installed, you will need to make sure you have mongoDB configured on your computer as outlined in the next section.
+
+If you already have mongoDB setup, you can run
 ```
 yarn start
 ```
@@ -40,12 +47,12 @@ https://docs.mongodb.com/manual/installation/
 * [Node.js](https://nodejs.org/en/) - javascript runtime
 
 ### NPM Packages
-* [Express](https://www.npmjs.com/package/express)
-* [body-parser](https://www.npmjs.com/package/body-parser)
-* [mongoose](https://www.npmjs.com/package/mongoose)
-* [cheerio](https://www.npmjs.com/package/cheerio)
-* [axios](https://www.npmjs.com/package/axios)
-* [morgan](https://www.npmjs.com/package/morgan)
+* [axios](https://www.npmjs.com/package/axios) - Promise based HTTP client
+* [body-parser](https://www.npmjs.com/package/body-parser) - Request parsing middleware
+* [cheerio](https://www.npmjs.com/package/cheerio) - Markup parser and manipulator
+* [Express](https://www.npmjs.com/package/express) - Routing framework
+* [mongoose](https://www.npmjs.com/package/mongoose) - NoSQL database
+* [morgan](https://www.npmjs.com/package/morgan) - Logging middleware
 
 
 ## Author :key:
